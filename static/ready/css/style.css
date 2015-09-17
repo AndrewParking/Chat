@@ -1,0 +1,115 @@
+#main-container {
+  width: 850px;
+  margin: 0 auto;
+  margin-top: 100px;
+  background: #eee;
+  padding-bottom: 40px;
+}
+#main-container .chat-header {
+  padding: 15px;
+  text-align: right;
+  background: #e9e9e9;
+  box-shadow: 0 2px 4px #ccc;
+}
+#main-container .chat-header button {
+  display: inline-block;
+  margin-left: 10px;
+  border: 3px solid #ccc;
+  background: #e9e9e9;
+  padding: 10px;
+  border-radius: 2px;
+  color: #bbb;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+#main-container .chat-header button:focus {
+  outline: none;
+}
+#main-container .chat-header button:hover {
+  color: #fff;
+  background: #ff663b;
+  border: 3px solid #ff663b;
+}
+#main-container .chat-header .current {
+  background: #ccc;
+  color: #fff;
+}
+#main-container .error {
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 50px;
+  background: #ff663b;
+  color: #fff;
+  padding: 7px 20px;
+  font-family: sans-serif;
+  position: relative;
+  border-radius: 3px;
+}
+#main-container .error .del-error {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+#main-container .error .del-error:before,
+#main-container .error .del-error:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 16px;
+  width: 2px;
+  background-color: #fff;
+}
+#main-container .error .del-error:before {
+  transform: rotate(45deg);
+}
+#main-container .error .del-error:after {
+  transform: rotate(-45deg);
+}
+#main-container .auth-form {
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+#main-container .auth-form input,
+#main-container .auth-form button {
+  display: block;
+  margin-bottom: 15px;
+}
+#main-container .auth-form input {
+  width: 100%;
+  padding: 10px 15px;
+  color: #888;
+  border-radius: 2px;
+  border: none;
+  box-shadow: 0 0 0;
+  transition: box-shadow 0.3s ease-in-out;
+}
+#main-container .auth-form input:focus {
+  outline: none;
+  box-shadow: 0 2px 4px #ccc;
+}
+#main-container .auth-form button {
+  border: 3px solid #ccc;
+  background: #e9e9e9;
+  padding: 7px 30px;
+  border-radius: 2px;
+  color: #bbb;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  margin: 0 auto;
+}
+#main-container .auth-form button:focus {
+  outline: none;
+}
+#main-container .auth-form button:hover {
+  color: #fff;
+  background: #ff663b;
+  border: 3px solid #ff663b;
+}
