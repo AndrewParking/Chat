@@ -237,9 +237,9 @@ class MessageHandler(tornado.websocket.WebSocketHandler):
 			message['from_account_id'] = int(self.user_id)
 			message['message_id'] = message_id
 			message['alr_read'] = 0
+			self.application.online[self.user_id.decode('utf-8')].write_message(message)
 			if self.application.online.get(str(message['to_account_id']), False):
 				self.application.online[str(message['to_account_id'])].write_message(message)
-				self.application.online[self.user_id.decode('utf-8')].write_message(message)
 			cur.close()
 		else:
 			self.ws_connection.write_message({

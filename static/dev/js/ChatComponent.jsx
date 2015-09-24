@@ -27,7 +27,7 @@ class ChatComponent extends React.Component {
 
 		this.socket.onmessage = function(e) {
 			let message = JSON.parse(e.data);
-			console.log(message);
+			console.log('message ->', message);
 			self.setState(prev => {
 				let newMessages = prev.messages;
 				if (prev.currentUser && message.from_account_id == prev.currentUser.account_id) {
@@ -73,7 +73,7 @@ class ChatComponent extends React.Component {
 			nick = e.target.parentNode.getAttribute('data-nick');
 		console.log('---->', nick);
 		for (let user of this.state.users) {
-			if (user.nickname = nick) {
+			if (user.nickname == nick) {
 				found = user;
 			}
 		}
@@ -99,7 +99,8 @@ class ChatComponent extends React.Component {
 
 	getUsers() {
 		return this.state.users.map(user => {
-			let counter = 0;
+			let counter = 0,
+				cssClass = user == this.state.currentUser ? 'current-user' : '';
 			for (let message of this.state.messages) {
 				if (message.from_account_id == user.account_id && message.alr_read == 0) {
 					counter++;
@@ -108,10 +109,11 @@ class ChatComponent extends React.Component {
 			if (!counter) {
 				counter = '';
 			};
+			let strong = counter ? <strong>{counter}</strong> : '';
+			console.log('user -->', user);
 			return (
-				<button onClick={this.selectUser} data-nick={user.nickname} key={user.account_id}>
-					{user.nickname}
-					<span>{counter}</span>
+				<button className={cssClass} onClick={this.selectUser} data-nick={user.nickname} key={user.account_id}>
+					{user.nickname}{strong}
 				</button>
 			);
 		});
@@ -124,29 +126,33 @@ class ChatComponent extends React.Component {
 				if (message.to_account_id === user.account_id) {
 					return (
 						<div className='message own' key={message.message_id}>
-							{message.content}
-							<button id={message.message_id} onClick={this.removeMessage}>Delete</button>
+							<div>
+								{message.content}
+								<button id={message.message_id} onClick={this.removeMessage}></button>
+							</div>
 						</div>
 					);
 				};
 				if (message.from_account_id === user.account_id) {
 					return (
 						<div className='message foreign' key={message.message_id}>
-							{message.content}
-							<button id={message.message_id} onClick={this.removeMessage}>Delete</button>
+							<div>
+								{message.content}
+								<button id={message.message_id} onClick={this.removeMessage}></button>
+							</div>
 						</div>
 					);
 				};
 			});
 		} else {
-			return <div>Please, choose the user...</div>
+			return <div className='no-user-chosen'>Please, choose the user...</div>
 		}
 	}
 
 	getForm() {
 		if (this.state.currentUser) {
 			return (
-				<div>
+				<div className='message-form'>
 					<textarea id='mes-input' placeholder='Start typing here...'></textarea>
 					<button onClick={this.sendMessage}>Send</button>
 				</div>

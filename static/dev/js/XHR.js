@@ -8,11 +8,10 @@ module.exports = {
 				url = baseUrl + '/sign-up/';
 
 			request.onload = function() {
-				let response = JSON.parse(this.responseText);
 				if (this.status == 201) {
-					resolve(response);
+					resolve(this.responseText);
 				} else {
-					reject(response);
+					reject(this.responseText);
 				}
 			}
 
@@ -32,9 +31,9 @@ module.exports = {
 			request.onload = function() {
 				let response = JSON.parse(this.responseText);
 				if (this.status == 200) {
-					resolve(response);
+					resolve(this.responseText);
 				} else {
-					reject(response);
+					reject(this.responseText);
 				}
 			}
 

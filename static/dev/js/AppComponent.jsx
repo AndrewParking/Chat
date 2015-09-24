@@ -71,7 +71,6 @@ class AppComponent extends React.Component {
 						error: ''
 					};
 				});
-				console.log(result);
 			}, error => {
 				self.setState(prev => {
 					return {
@@ -80,7 +79,6 @@ class AppComponent extends React.Component {
 						error: error.error
 					};
 				});
-				console.log(error);
 			});
 	}
 
@@ -93,6 +91,7 @@ class AppComponent extends React.Component {
 			};
 		signUpXHR(data)
 			.then(result => {
+				console.log('sign up data -->', result);
 				self.setState(prev => {
 					return {
 						authed: true,
@@ -168,6 +167,7 @@ class AppComponent extends React.Component {
 			return (
 				<section>
 					<div className="chat-header">
+						<div className='logo'>Simple chat</div>
 						<button onClick={this.logOut}>Logout</button>
 					</div>
 					<div>
@@ -185,6 +185,7 @@ class AppComponent extends React.Component {
 			return (
 				<section>
 					<div className="chat-header">
+						<div className='logo'>Simple chat</div>
 						<button onClick={this.chooseSignIn} className={signInBtnClass}>Sign In</button>
 						<button onClick={this.chooseSignUp} className={signUpBtnClass}>Sign Up</button>
 					</div>
@@ -199,3 +200,4 @@ class AppComponent extends React.Component {
 }
 
 module.exports = AppComponent;
+
